@@ -4,3 +4,6 @@ install:
 clean:
 	pip uninstall delivery
 
+test:
+	pytest ./tests/ -v
+
