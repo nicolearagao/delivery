@@ -1,15 +1,23 @@
 {% extends "foundation.html" %}
+{% import "/macros/list_items.html" as list_items %}
 
 {% block top %}
 <section class="hero is-danger">
   <div class="hero-body">
     <p class="title">
-        ZooperWeird
+        Restaurants
     </p>
     <p class="subtitle">
-       The easiest way to order from your favorite food spots
+       What are you feeling like?
     </p>
   </div>
 </section>
 {% endblock top %}
+
+
+{%block main %}
+<div class="columns">
+{{list_items.cards([1,2,3,4,5,6])}}
+</div>
+{% endblock main %}
 
