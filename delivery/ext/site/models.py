@@ -58,3 +58,13 @@ class Order(db.Model):
     user = db.relationship("User", foreign_key=user_id)
     store = db.relationship("Store", foreign_key=store_id)
     address = db.relationship("Address", foreign_key=address_id)
+
+
+class OrderItems(db.Model):
+    order_id = db.Column("order_id", db.Integer, db.ForeignKey("order.id"))
+    items_id = db.Column("items_id", db.Integer, db.ForeignKey("items.id"))
+    quantity = db.Column("quantity", db.Integer)
+    id = db.Column("id", db.Integer, primary_key=True)
+
+    order = db.relationship("Order", foreign_key=order_id)
+    items = db.relationship("Items", foreign_key=items_id)
