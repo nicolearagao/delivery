@@ -12,7 +12,7 @@ class User(db.Model):
 
 class Category(db.Model):
     __tablename__ = "category"
-    id = db.Column("id", db.Integer, primary_key= True)
+    id = db.Column("id", db.Integer, primary_key=True)
     name = db.Column("name", db.Unicode)
 
 
@@ -47,5 +47,14 @@ class Address(db.Model):
     user = db.relationship("User", foreign_key=user_id)
 
 
+class Order(db.Model):
+    id = db.Column("id", db.Integer, primary_key=True)
+    created_at = db.Column("created_at", db.DateTime)
+    completed = db.Column("completed", db.Boolean)
+    user_id = db.Column("user_id", db.Integer, db.ForeignKey("user.id"))
+    store_id = db.Column("store_id", db.Integer, db.ForeignKey("store.id"))
+    address_id = db.Column("address-id", db.Integer, db.ForeignKey("address.id"))
 
-
+    user = db.relationship("User", foreign_key=user_id)
+    store = db.relationship("Store", foreign_key=store_id)
+    address = db.relationship("Address", foreign_key=address_id)
