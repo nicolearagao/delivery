@@ -68,3 +68,16 @@ class OrderItems(db.Model):
 
     order = db.relationship("Order", foreign_key=order_id)
     items = db.relationship("Items", foreign_key=items_id)
+
+
+class Checkout(db.Model):
+    id = db.Column("id", db.Integer, primary_key=True)
+    payment = db.Column("payment", db.Unicode)
+    total = db.Column("Total", db.Numeric)
+    created_at = db.Column("created_at", db.DateTime)
+    completed = db.Column("completed", db.Boolean)
+    order_id = db.Column("order_id", db.Integer, db.ForeignKey("order.id"))
+
+    order = db.relationship("Order", foreign_key=order_id)
+
+
